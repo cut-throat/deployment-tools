@@ -1,0 +1,30 @@
+---
+# tasks file for aks-deployment-role
+- name: deploying Application to K8
+  hosts: 13.79.190.97
+  gather_facts: false
+  vars:
+    kubeconfig_file: C:\Users\Rober\.kube\config
+    namespace_name: app_ns
+  tasks:
+    - name: Create a k8s namespace
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_file }}"
+        name: "{{ namespace_name }}"
+        api_version: v1
+        kind: Namespace
+        state: present
+
+    - name: Create Deployment
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_file }}"
+        state: present
+        src: app-deploy.yaml
+        namespace: "{{ namespace_name }}"
+
+    - name: Expose application on Nodeport
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_file }}"
+        state: present
+        src: app-service.yaml
+        namespace: "{{ namespace_name }}"

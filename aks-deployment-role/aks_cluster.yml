@@ -1,0 +1,6 @@
+- hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts: yes
+  roles:
+    - aks_cluster

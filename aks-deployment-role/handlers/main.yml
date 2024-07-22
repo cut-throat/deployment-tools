@@ -1,0 +1,21 @@
+---
+# handlers file for aks-deployment-role
+- name: Create AKS Cluster
+  azure_rm_aks:
+    resource_group: "{{ rg_unir-CP2 }}"
+    name: "{{ aksunircp2 }}"
+    location: "{{ North Europe }}"
+    kubernetes_version: "{{ 1.29.5 }}"
+    #dns_prefix: 
+    service_principal:
+      client_id: "{{ robertocarlos.estrada205@comunidadunir.net }}"
+      client_secret: "{{ xoanRS2012 }}"
+    agent_pool_profiles:
+      - name: default
+        count: 1
+        vm_size: "{{ Standard_DS1_v2 }}"
+        os_type: "{{ Linux }}"
+        mode: System
+    state: present
+  # Delegate_to: localhost
+

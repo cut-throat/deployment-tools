@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: service
+metada:
+  name: app-svc
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 3000
+      port: 3000
+      nodePort: 30080
+  selector:
+    app: nginx

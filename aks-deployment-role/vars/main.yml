@@ -1,0 +1,18 @@
+---
+# vars file for aks-deployment-role
+# Define vars needed for AKS login
+azure_client_id: robertocarlos.estrada205@comunidadunir.net
+azure_secret: xoanRS2012
+azure_subscription_id: ef97c0ad-317a-4167-b59f-9244f67e4464
+azure_tenant: UNIR 
+#
+# define othjer vars needed for AKS creation
+resource_group: rg_unir-CP2
+aks_cluster_name: aksunircp2
+resource_group_location: North Europe 
+kubernetes_version: 1.29.5
+  #dns_prefix:
+node_count: 1
+node_vm_size: Standard_DS1_v2
+os_type: Linux
+#
