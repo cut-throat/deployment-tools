@@ -1,0 +1,12 @@
+all:
+    hosts:
+      host1.example.com:
+    children:
+      webservers:
+        hosts:
+          host2.example.com:
+          13.79.190.97:
+      databases:
+        hosts:
+          host3.example.com:
+          host4.example.com:

@@ -1,0 +1,21 @@
+---
+- name: Nginx Install
+  hosts: all
+  remote_user: testadmin
+  become: yes
+
+  tasks:
+  - name: nginx install
+    apt:
+      name: nginx
+      state: latest
+
+  - name: copy main page
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
